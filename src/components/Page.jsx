@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { Box } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-// import api from '../api'
+import api from '../api'
 
 const Context = createContext()
 export const usePageContext = () => useContext(Context)
