@@ -1,8 +1,8 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { Button, Paper, TextField } from "@mui/material";
+import { Button, Paper, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import api from "../../api";
+// import api from "../../api";
 import Page from "../../components/Page";
 
 export default function LoginPage() {
@@ -14,7 +14,7 @@ export default function LoginPage() {
       .required("Email is required"),
     password: yup
       .string("Enter your password")
-      .min(2, "Password should be of minimum 7 characters length")
+      .min(2, "Password should be of minimum 2 characters length")
       .required("Password is required"),
   });
 
@@ -38,23 +38,47 @@ export default function LoginPage() {
   return (
     <Page
       sx={{
-        height: "100vh",
-        width: "100vw",
+
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: 'rgba(169, 169, 169, 0.3)',
       }}
     >
-      <Paper elevation={3} sx={{ padding: "30px" }}>
+
+      <Typography
+              sx={{
+                display:'flex',
+                width: '50%',
+                mb:'50px',
+                p:"4px",
+                backgroundColor: "white",
+                borderRadius:2,
+                justifyContent:'center'
+              }}
+      > GarageAdminArea</Typography>
+      <Paper 
+        sx={{
+          display:'flex',
+          width: '50%',
+          p:"50px",
+          justifyContent:'center',
+
+        }}
+      >
         <form
           onSubmit={formik.handleSubmit}
           style={{
             display: "flex",
             flexDirection: "column",
+
           }}
         >
           <TextField
+            sx={{
+              mb:'20px'
+            }}
             id="email"
             name="email"
             label="Email"
@@ -64,6 +88,9 @@ export default function LoginPage() {
             helperText={formik.touched.email && formik.errors.email}
           />
           <TextField
+            sx={{
+              mb:'20px'
+            }}
             id="password"
             name="password"
             label="Password"
