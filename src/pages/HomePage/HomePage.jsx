@@ -3,7 +3,6 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import Page from "../../components/Page";
 import { Box } from "@mui/system";
 import { Button, Typography } from "@mui/material";
-import sx from "@mui/system/sx";
 
 export default function HomePage() {
     const navigate = useNavigate();
@@ -19,14 +18,15 @@ export default function HomePage() {
 
                 }} >
                 
-                <Typography style={{color : 'white', }}>Your Garage</Typography>
-                <Typography style={{color:'white'}}>Owner: {sessionStorage.email}</Typography>
+                <Typography sx={{color : 'white', fontWeight:'bold'}}>Your Garage</Typography>
+                <Typography sx={{color:'white'}}>Owner: {sessionStorage.email}</Typography>
                     <Button 
                     sx={{
                         display :'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        backgroundColor:'white',
+                        backgroundColor:'gray',
+                        color:'white'
                     }}
                     onClick={
                         ()=>{
