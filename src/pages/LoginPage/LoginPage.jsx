@@ -57,7 +57,9 @@ export default function LoginPage() {
                 borderRadius:2,
                 justifyContent:'center'
               }}
-      > GarageAdminArea</Typography>
+      > 
+        Garage Admin Area
+      </Typography>
       <Paper 
         sx={{
           display:'flex',
