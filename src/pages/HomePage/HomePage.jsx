@@ -2,7 +2,6 @@ import Page from "../../components/Page";
 import HomePageAppBar from "./HomePageAppBar";
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Chip, Collapse, IconButton, List, Stack, TextField, Typography } from "@mui/material";
 import { useVehicleGet } from '../../query/vehicle'
-import { useAppContext } from "../../components/AppContext";
 import { useEffect, useState } from "react";
 import { Expand as ExpandMore } from "@mui/icons-material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -13,22 +12,20 @@ import AddNewVehicleButton from "./AddNewVehicleButton";
 
 
 export default function HomePage( ) {
-  const { data: vehicles = [], setVehicle } = useVehicleGet()
-  const { cart, setCart  } = useAppContext()
+  const {vehicles, setVehicle } = useVehicleGet([])
   const [expanded, setExpanded] = useState(false);
   const handleExpandClick = () => { 
     setExpanded(!expanded);
   }; 
     
-    const loadVehicles = (description,title ) => {
-      api
-        .get(`/vehicles`, {
+    const loadVehicles = (description, title) => {
+      api.get(`/vehicles`, {
           params: {
             description,
             title
           },
         })
-        .then(({ data }) => setVehicle(data))
+        .then( data => setVehicle(data))
     }
   
     useEffect(() => {
@@ -39,7 +36,6 @@ export default function HomePage( ) {
 return(
   <Page>  
       <HomePageAppBar />
-      
   <Box
         sx={{
           m: 4,
@@ -107,7 +103,6 @@ return(
       </Box>
 
 
-      {JSON.stringify(cart)}
   </Page>
 );
 }
