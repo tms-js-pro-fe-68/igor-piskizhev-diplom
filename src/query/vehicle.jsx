@@ -1,14 +1,14 @@
 import { useQuery } from 'react-query'
-import { useAppContext} from '../components/AppContext' 
+import { useAppContext} from '../components/AppContextProvider' 
 import api from '../api'
 
 export function useVehicleGet(options) {
-    const {isInitialized} = useAppContext()
+    const {isInitialized} = useAppContext ()
   
     return useQuery(
-      ['/vehicles'],
+      ['/vehicle'],
       async () => {
-        const result = await api.get(`/vehicles`)
+        const result = await api.get(`/vehicle`)
         return result.data
       },
       {

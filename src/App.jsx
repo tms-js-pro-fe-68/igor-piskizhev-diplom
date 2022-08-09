@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import LoginPage from './pages/LoginPage'
 import HomePage from './pages/HomePage'
+import AppContextProvider from './components/AppContextProvider'
 
 
 const queryClient = new QueryClient({
@@ -15,7 +16,8 @@ const queryClient = new QueryClient({
 function App() {
 
   return (
-    <div className="App">
+    <AppContextProvider>
+
     <QueryClientProvider client={queryClient}>
       <Router>
         <Routes>
@@ -24,7 +26,8 @@ function App() {
         </Routes>
       </Router>
     </QueryClientProvider>
-    </div>
+    </AppContextProvider>
+ 
   )
 }
 
